@@ -11,7 +11,7 @@ type WineCardImage = {
 
 type WineCardBase = {
   name: string;
-  descriptor: string; // e.g. "Kvalitetno bijelo suho vino"
+  descriptor?: string; // e.g. "Kvalitetno bijelo suho vino"; omitted for Vintonic
   price: number;
   volume: string;
   alcohol: number;
@@ -67,9 +67,12 @@ export function WineCard(props: WineCardProps) {
       {/* Caption — on the page background. */}
       <div className="mt-4 text-center">
         <h3 className="heading-m text-[var(--color-fg)]">{name}</h3>
-        <p className="body-md-regular mt-1 text-[var(--color-muted)]">
-          {descriptor}
-        </p>
+        {/* Descriptor is optional (Vintonic omits it) — render nothing, no gap. */}
+        {descriptor ? (
+          <p className="body-md-regular mt-1 text-[var(--color-muted)]">
+            {descriptor}
+          </p>
+        ) : null}
         <div className="mt-2 flex justify-center">
           <WineMeta price={price} volume={volume} alcohol={alcohol} />
         </div>

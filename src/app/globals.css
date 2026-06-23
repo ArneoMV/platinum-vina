@@ -46,6 +46,15 @@
     height: 100%;
   }
 
+  /* In-page anchor navigation (category chips) scrolls smoothly; respect
+     users who prefer reduced motion. Section anchors set scroll-margin-top
+     so titles clear the sticky header. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   body {
     margin: 0;
     background: var(--color-bg);
