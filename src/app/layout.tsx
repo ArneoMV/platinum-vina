@@ -1,21 +1,24 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { PT_Serif, Open_Sans } from "next/font/google";
 import "./globals.css";
 
-// PLACEHOLDER FONTS — refine from final design.
-// Serif drives headings, sans drives body; exposed as CSS variables on <html>
-// and mapped to --font-serif / --font-sans in globals.css @theme.
+// Platinum Vina design system fonts, exposed as CSS variables on <html> and
+// mapped to --font-serif / --font-sans in globals.css @theme.
 // latin-ext is included so Croatian diacritics (č, ć, đ, š, ž) render correctly.
-const serif = Cormorant_Garamond({
-  variable: "--font-cormorant",
+//
+// PT Serif drives headlines (display serif); Open Sans drives headings + body.
+const serif = PT_Serif({
+  variable: "--font-pt-serif",
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400",
+  style: "normal",
   display: "swap",
 });
 
-const sans = Inter({
-  variable: "--font-inter",
+const sans = Open_Sans({
+  variable: "--font-open-sans",
   subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -32,9 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="hr" className={`${serif.variable} ${sans.variable}`}>
-      <body className="bg-[var(--color-bg)] text-[var(--color-fg)]">
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

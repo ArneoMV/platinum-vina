@@ -1,17 +1,37 @@
 @import "tailwindcss";
 
-/* PLACEHOLDER TOKENS — refine from final design */
+/* ===========================================================================
+   Platinum Vina design system
+   Light + neutral palette. Fonts: PT Serif (serif) + Open Sans (sans).
+   Reference tokens via the arbitrary form, e.g. bg-[var(--color-bg)].
+   =========================================================================== */
 @theme {
-  /* Brand palette */
-  --color-bg: #1a1f17; /* dark olive / near-black */
-  --color-surface: #232a1e; /* slightly lighter than bg */
-  --color-fg: #f3efe7; /* off-white */
-  --color-muted: #a39e91; /* muted warm grey */
-  --color-accent: #7a2e2e; /* deep wine red */
+  /* Neutral palette — overrides Tailwind's default neutral-* scale. */
+  --color-neutral-white: #fcfcfc;
+  --color-neutral-100: #fcfcfc;
+  --color-neutral-200: #f6f6f6;
+  --color-neutral-300: #ededed;
+  --color-neutral-400: #dedede;
+  --color-neutral-500: #ababab;
+  --color-neutral-600: #7c7c7c;
+  --color-neutral-700: #4c4c4c;
+  --color-neutral-800: #383838;
+  --color-neutral-900: #232323;
+  --color-neutral-999: #000000;
 
-  /* Typography — mapped to the next/font variables set on <html> in layout.tsx */
-  --font-serif: var(--font-cormorant);
-  --font-sans: var(--font-inter);
+  /* Semantic aliases */
+  --color-bg: var(--color-neutral-white);
+  --color-surface: var(--color-neutral-200);
+  --color-fg: var(--color-neutral-900);
+  --color-muted: var(--color-neutral-600);
+  --color-border: var(--color-neutral-400);
+  --color-divider: var(--color-neutral-300);
+  --color-footer-bg: var(--color-neutral-900);
+  --color-footer-fg: var(--color-neutral-white);
+
+  /* Fonts — next/font sets --font-pt-serif / --font-open-sans on <html>. */
+  --font-serif: var(--font-pt-serif);
+  --font-sans: var(--font-open-sans);
 }
 
 @layer base {
@@ -34,4 +54,158 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+}
+
+/* ===========================================================================
+   Typography presets — one @utility per row so responsive/state variants
+   (e.g. md:headline-xl, hover:heading-m) compose automatically.
+   All line-height 1.3 (unitless). Sizes in rem (= px / 16).
+   =========================================================================== */
+
+/* HEADLINES — serif, weight 400, letter-spacing 0.02em */
+@utility headline-xxl {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 5.4375rem; /* 87px */
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+@utility headline-xl {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 4.0625rem; /* 65px */
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+@utility headline-l {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 3.0625rem; /* 49px */
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+@utility headline-m {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 2.3125rem; /* 37px */
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+@utility headline-s {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem; /* 28px */
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+@utility headline-xs {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.3125rem; /* 21px */
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+@utility headline-xxs {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+
+/* HEADINGS — sans, weight 600, letter-spacing 0.02em */
+@utility heading-xxl {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 3rem; /* 48px */
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+@utility heading-xl {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 2.375rem; /* 38px */
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+@utility heading-l {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.875rem; /* 30px */
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+@utility heading-m {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.5rem; /* 24px */
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+@utility heading-s {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.1875rem; /* 19px */
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+@utility heading-xs {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+@utility heading-xxs {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+
+/* BODY — sans, letter-spacing 0. Weight follows the design's STYLE column.
+   NOTE: design's "Body/Big/Semibold" row lists STYLE = Medium, so it is
+   weight 500 (not 600). Weight tracks the STYLE column throughout. */
+@utility body-big-bold {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+@utility body-big-semibold {
+  font-family: var(--font-sans);
+  font-weight: 500; /* STYLE = Medium */
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+@utility body-big-regular {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 1rem; /* 16px */
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+@utility body-md-bold {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+@utility body-md-semibold {
+  font-family: var(--font-sans);
+  font-weight: 500; /* STYLE = Medium */
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+@utility body-md-regular {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.3;
+  letter-spacing: 0;
 }
