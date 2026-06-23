@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { PT_Serif, Open_Sans } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/organisms/Header";
+import { Footer } from "@/components/organisms/Footer";
+import { Container } from "@/components/atoms/Container";
 
 // Platinum Vina design system fonts, exposed as CSS variables on <html> and
 // mapped to --font-serif / --font-sans in globals.css @theme.
@@ -35,7 +38,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="hr" className={`${serif.variable} ${sans.variable}`}>
-      <body>{children}</body>
+      <body className="flex min-h-screen flex-col">
+        <Header />
+        <main className="flex-1">
+          <Container className="py-10 md:py-16">{children}</Container>
+        </main>
+        <Footer />
+      </body>
     </html>
   );
 }

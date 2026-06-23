@@ -1,9 +1,13 @@
 import { cn } from "@/lib/cn";
 
 export type LogoSize = "sm" | "md" | "lg";
+// "dark" = dark ink for light backgrounds (default); "light" = white ink for
+// the dark footer. Both crown (fill) and wordmark follow currentColor.
+export type LogoTone = "dark" | "light";
 
 type LogoProps = {
   size?: LogoSize;
+  tone?: LogoTone;
   className?: string;
 };
 
@@ -13,14 +17,22 @@ const wordmarkClass: Record<LogoSize, string> = {
   md: "heading-s",
   lg: "heading-l",
 };
+const toneClass: Record<LogoTone, string> = {
+  dark: "text-[var(--color-fg)]",
+  light: "text-[var(--color-footer-fg)]",
+};
 
-export function Logo({ size = "md", className }: LogoProps) {
+export function Logo({ size = "md", tone = "dark", className }: LogoProps) {
   return (
     <span
-      className={cn("inline-flex items-center gap-2.5 text-[var(--color-fg)]", className)}
+      className={cn(
+        "inline-flex items-center gap-2.5",
+        toneClass[tone],
+        className,
+      )}
     >
       {/*
-        Placeholder crown — simple inline SVG.
+        Placeholder crown — simple inline SVG, inherits currentColor.
         TODO: replace with the real /public/assets/logo.svg when provided.
       */}
       <svg

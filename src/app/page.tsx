@@ -75,7 +75,9 @@ function Section({
 
 export default function Home() {
   return (
-    <main className="mx-auto max-w-5xl px-6 py-16">
+    // Outer <main>, max-width and padding now come from the root layout
+    // (Header + Footer wrap this). Content below is unchanged temp preview.
+    <>
       <header className="flex flex-col items-start gap-6">
         <Logo size="lg" />
         <p className="body-big-regular text-[var(--color-muted)]">
@@ -156,6 +158,6 @@ export default function Home() {
           />
         </div>
       </Section>
-    </main>
+    </>
   );
 }
