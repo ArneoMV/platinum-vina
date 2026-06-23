@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+/* PLACEHOLDER TOKENS — refine from final design */
+@theme {
+  /* Brand palette */
+  --color-bg: #1a1f17; /* dark olive / near-black */
+  --color-surface: #232a1e; /* slightly lighter than bg */
+  --color-fg: #f3efe7; /* off-white */
+  --color-muted: #a39e91; /* muted warm grey */
+  --color-accent: #7a2e2e; /* deep wine red */
+
+  /* Typography — mapped to the next/font variables set on <html> in layout.tsx */
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-inter);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
