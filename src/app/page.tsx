@@ -1,9 +1,11 @@
 import { Hero } from "@/sections/Hero";
 import { CategorySection } from "@/sections/CategorySection";
+import { ClosingStatement } from "@/sections/ClosingStatement";
+import { WhySelection } from "@/sections/WhySelection";
+import { ContactCta } from "@/sections/ContactCta";
 
-// Homepage: hero + the five catalog category sections, in catalog order.
-// Width/padding/vertical rhythm come from the layout <main>/Container.
-// (The "Jedna ponuda" / "Zašto baš ova selekcija" / CTA blocks come next task.)
+// Homepage: hero + the five catalog category sections + the three closing
+// blocks. Width/padding/vertical rhythm come from the layout <main>/Container.
 export default function Home() {
   return (
     <>
@@ -13,6 +15,9 @@ export default function Home() {
       <CategorySection slug="vranac" />
       <CategorySection slug="vrhunska-hrvatska" />
       <CategorySection slug="vintonic" />
+      <ClosingStatement />
+      <WhySelection />
+      <ContactCta />
     </>
   );
 }
