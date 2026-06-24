@@ -47,10 +47,14 @@ export function WineCard(props: WineCardProps) {
 
   return (
     <article className={cn("group flex flex-col", className)}>
-      {/* Image area — background changes by variant; bottle centered + padded. */}
+      {/* Image area — a consistent square box per card; bottle uses `fill` +
+          object-contain with uniform padding so every variant renders the
+          bottle at the same visual size. `fill` (no width/height props) avoids
+          the next/image "width or height modified, but not the other" warning;
+          `sizes` keeps the optimizer from over-fetching. */}
       <div
         className={cn(
-          "flex aspect-square items-center justify-center overflow-hidden rounded-lg p-8",
+          "relative aspect-square overflow-hidden rounded-lg",
           "transition-shadow duration-300 group-hover:shadow-lg",
         )}
         style={{ backgroundColor: areaBg }}
@@ -58,9 +62,9 @@ export function WineCard(props: WineCardProps) {
         <Image
           src={image.src}
           alt={image.alt}
-          width={480}
-          height={640}
-          className="h-full w-auto object-contain transition-transform duration-300 ease-out group-hover:scale-105"
+          fill
+          sizes="(min-width: 1024px) 360px, (min-width: 768px) 45vw, 90vw"
+          className="object-contain p-8 transition-transform duration-300 ease-out group-hover:scale-105"
         />
       </div>
 

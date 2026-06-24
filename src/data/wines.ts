@@ -47,6 +47,9 @@ export interface Category {
   eyebrow: string;
   intro: string;
   badge?: string;
+  // How the intro paragraph lays out on md+: 1 = single column (default),
+  // 2 = split across two columns (used for the longer vranac/vintonic intros).
+  introColumns?: 1 | 2;
 }
 
 export const wines: Wine[] = [
@@ -292,6 +295,7 @@ export const categories: Category[] = [
     eyebrow: "15 godina s nama na tržištu",
     intro:
       "Naš prepoznatljivi Vranac dolazi iz vinogorja Strumičko-Radoviško u Sjevernoj Makedoniji, kao vino s oznakom zemljopisnog podrijetla. Petnaest godina prisutnosti na tržištu i osvježeni vizualni identitet potvrđuju njegovo mjesto među omiljenim crnim vinima. Duboke boje, punog tijela i izražajnih nota tamnog voća, dostupan je u tri formata za svaku priliku.",
+    introColumns: 2,
   },
   {
     slug: "vrhunska-hrvatska",
@@ -307,6 +311,7 @@ export const categories: Category[] = [
     eyebrow: "Gotov koktel na bazi vina",
     intro:
       "Vintonic je gotovi pjenušavi koktel na bazi vina za sve koji žele brzo, jednostavno i konzistentno piće bez dodatne pripreme. Spaja svježinu pjenušca s citrusno-gorkastim tonik profilom, pa daje dojam pravog koktela uz praktičnost gotovog proizvoda. Najbolje poslužen dobro rashlađen.",
+    introColumns: 2,
   },
 ];
 

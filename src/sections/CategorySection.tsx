@@ -1,3 +1,4 @@
+import { cn } from "@/lib/cn";
 import { WineCard } from "@/components/molecules/WineCard";
 import { getCategory, getWinesByCategory } from "@/data/wines";
 import type { WineCategory } from "@/data/wines";
@@ -12,6 +13,8 @@ export function CategorySection({ slug }: CategorySectionProps) {
 
   if (!category) return null;
 
+  const twoColIntro = category.introColumns === 2;
+
   return (
     // scroll-mt-24 keeps the title clear of the ~59px sticky header on anchor
     // jumps; border-t is the thin divider between sections.
@@ -19,14 +22,21 @@ export function CategorySection({ slug }: CategorySectionProps) {
       id={slug}
       className="scroll-mt-24 border-t border-[var(--color-divider)] py-12 md:py-16"
     >
-      <div className="max-w-[70ch]">
-        <p className="heading-xs uppercase text-[var(--color-muted)]">
-          {category.eyebrow}
-        </p>
-        <h2 className="headline-l md:headline-xl mt-2 text-[var(--color-fg)]">
+      <div>
+        {/* category.eyebrow is intentionally NOT rendered — the mockups have no
+            eyebrow above section titles. The field stays in the data. */}
+        <h2 className="headline-m md:headline-l text-[var(--color-fg)]">
           {category.label}
         </h2>
-        <p className="body-big-regular mt-4 text-[var(--color-neutral-700)]">
+        <p
+          className={cn(
+            "body-big-regular mt-4 text-[var(--color-neutral-700)]",
+            // Longer intros (vranac, vintonic) flow across two columns on md+.
+            twoColIntro
+              ? "max-w-[78ch] md:columns-2 md:gap-x-12"
+              : "max-w-[70ch]",
+          )}
+        >
           {category.intro}
         </p>
         {category.badge ? (
