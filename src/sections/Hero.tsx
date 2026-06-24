@@ -1,33 +1,27 @@
 import { CategoryChips } from "@/components/molecules/CategoryChips";
 
-// Homepage hero. Two-column on lg+ (title + lead left, category chips top-right);
-// stacked on small/medium (title + lead, chips beneath).
+// Homepage hero. Unified section layout: full-width title on top, then a
+// 2-column row (lead left, category chips right) on lg+; everything stacks to a
+// single full-width column on small/medium.
 // Width/padding come from the layout Container; this only owns vertical rhythm.
 export function Hero() {
   return (
     <section>
-      <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
-        <div className="max-w-[60ch]">
-          <h1 className="headline-l md:headline-xl text-[var(--color-fg)]">
-            Vinska ponuda
-          </h1>
-          <p className="body-big-regular mt-4 text-[var(--color-neutral-700)]">
-            Pažljivo birana selekcija za 2026. Od velikih pakiranja za svaki
-            dan, preko prepoznatljivog Vranca, do vrhunskih hrvatskih vina i
-            modernih Vintonic koktela.
-          </p>
-        </div>
-        {/*
-          Right cluster. The lg max-width is tuned to the combined width of the
-          three top chips (Velika pakiranja / Atraktivne sorte / Vranac) plus
-          their two 8px gaps, so flex-wrap breaks the row 3 + 2 with no manual
-          <br>; the wider 4th chip (Vrhunska Hrvatska vina) is forced onto a
-          second row. align="end" right-aligns the rows on lg+ while small
-          screens stack and wrap left. lg:pt-2 top-aligns to the heading.
-        */}
-        <div className="lg:max-w-140 lg:shrink-0 lg:pt-2">
-          <CategoryChips align="end" />
-        </div>
+      <h1 className="headline-l md:headline-xl text-[var(--color-fg)]">
+        Vinska ponuda
+      </h1>
+
+      {/* Unified row recipe (grid grid-cols-1 lg:grid-cols-2 gap-xl): lead in
+          column 1, chips in column 2 (right-aligned on lg+ via align="end").
+          mt-sm (16px) keeps the title → row spacing. No column max-widths —
+          each track is 1fr, so the chips wrap within their own column. */}
+      <div className="mt-sm grid grid-cols-1 lg:grid-cols-2 gap-xl">
+        <p className="body-big-regular text-[var(--color-neutral-700)]">
+          Pažljivo birana selekcija za 2026. Od velikih pakiranja za svaki dan,
+          preko prepoznatljivog Vranca, do vrhunskih hrvatskih vina i modernih
+          Vintonic koktela.
+        </p>
+        <CategoryChips align="end" />
       </div>
     </section>
   );
