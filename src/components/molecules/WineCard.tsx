@@ -47,14 +47,14 @@ export function WineCard(props: WineCardProps) {
 
   return (
     <article className={cn("group flex flex-col", className)}>
-      {/* Image area — a consistent square box per card; bottle uses `fill` +
-          object-contain with uniform padding so every variant renders the
-          bottle at the same visual size. `fill` (no width/height props) avoids
-          the next/image "width or height modified, but not the other" warning;
+      {/* Image area — full card width, fixed 250px tall (Figma spec). Bottle
+          uses `fill` + object-contain with horizontal padding so tall bottles
+          and the wide BiB box stay centered and uncropped. `fill` (no
+          width/height props) avoids the next/image aspect-ratio warning;
           `sizes` keeps the optimizer from over-fetching. */}
       <div
         className={cn(
-          "relative aspect-square overflow-hidden rounded-lg",
+          "relative h-[250px] w-full overflow-hidden rounded-lg",
           "transition-shadow duration-300 group-hover:shadow-lg",
         )}
         style={{ backgroundColor: areaBg }}
@@ -64,22 +64,25 @@ export function WineCard(props: WineCardProps) {
           alt={image.alt}
           fill
           sizes="(min-width: 1024px) 360px, (min-width: 768px) 45vw, 90vw"
-          className="object-contain p-8 transition-transform duration-300 ease-out group-hover:scale-105"
+          className="object-contain px-8 py-4 transition-transform duration-300 ease-out group-hover:scale-105"
         />
       </div>
 
-      {/* Caption — on the page background. */}
+      {/* Caption — 16px below the image, then 8px between each line. */}
       <div className="mt-4 text-center">
-        <h3 className="heading-m text-[var(--color-fg)]">{name}</h3>
-        {/* Descriptor is optional (Vintonic omits it) — render nothing, no gap. */}
+        <h3 className="headline-xxs text-[var(--color-neutral-999)]">{name}</h3>
+        {/* Description omitted entirely when absent (Vintonic) — no gap. */}
         {descriptor ? (
-          <p className="body-md-regular mt-1 text-[var(--color-muted)]">
+          <p className="body-big-regular mt-2 text-[var(--color-neutral-999)]">
             {descriptor}
           </p>
         ) : null}
-        <div className="mt-2 flex justify-center">
-          <WineMeta price={price} volume={volume} alcohol={alcohol} />
-        </div>
+        <WineMeta
+          className="mt-2"
+          price={price}
+          volume={volume}
+          alcohol={alcohol}
+        />
       </div>
     </article>
   );

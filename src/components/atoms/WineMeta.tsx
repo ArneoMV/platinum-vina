@@ -8,12 +8,15 @@ type WineMetaProps = {
   className?: string;
 };
 
-// Single meta line: "3,05€ / 2L / Alk. 12,5%" with muted slash separators.
+// Single meta line: "3,05€ / 2L / Alk. 12,5%" — neutral-700 with matching
+// neutral-700 slash separators (Figma spec).
 export function WineMeta({ price, volume, alcohol, className }: WineMetaProps) {
-  const sep = <span className="text-[var(--color-muted)]"> / </span>;
+  const sep = <span className="text-[var(--color-neutral-700)]"> / </span>;
 
   return (
-    <p className={cn("body-md-regular text-[var(--color-fg)]", className)}>
+    <p
+      className={cn("body-big-semibold text-[var(--color-neutral-700)]", className)}
+    >
       <span>{formatPrice(price)}</span>
       {sep}
       <span>{volume}</span>
