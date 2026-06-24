@@ -9,7 +9,10 @@ const focusRing =
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--color-footer-bg)] text-[var(--color-footer-fg)]">
+    <footer
+      id="kontakt"
+      className="bg-[var(--color-footer-bg)] text-[var(--color-footer-fg)]"
+    >
       <Container className="py-14 md:py-20">
         {/* Centered brand mark, white ink on dark. */}
         <div className="flex justify-center">
