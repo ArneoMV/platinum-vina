@@ -49,6 +49,11 @@ export interface Category {
   // How the intro paragraph lays out on md+: 1 = single column (default),
   // 2 = split across two columns (used for the longer vranac/vintonic intros).
   introColumns?: 1 | 2;
+  // For introColumns===2: the intro split into two balanced halves at a
+  // sentence boundary, rendered as a full-width 2-column grid. `intro` stays
+  // the canonical full text (fallback / single-column / SEO). Joining the two
+  // parts with a single space reproduces `intro` exactly.
+  introParts?: [string, string];
 }
 
 export const wines: Wine[] = [
@@ -295,6 +300,10 @@ export const categories: Category[] = [
     intro:
       "Naš prepoznatljivi Vranac dolazi iz vinogorja Strumičko-Radoviško u Sjevernoj Makedoniji, kao vino s oznakom zemljopisnog podrijetla. Petnaest godina prisutnosti na tržištu i osvježeni vizualni identitet potvrđuju njegovo mjesto među omiljenim crnim vinima. Duboke boje, punog tijela i izražajnih nota tamnog voća, dostupan je u tri formata za svaku priliku.",
     introColumns: 2,
+    introParts: [
+      "Naš prepoznatljivi Vranac dolazi iz vinogorja Strumičko-Radoviško u Sjevernoj Makedoniji, kao vino s oznakom zemljopisnog podrijetla.",
+      "Petnaest godina prisutnosti na tržištu i osvježeni vizualni identitet potvrđuju njegovo mjesto među omiljenim crnim vinima. Duboke boje, punog tijela i izražajnih nota tamnog voća, dostupan je u tri formata za svaku priliku.",
+    ],
   },
   {
     slug: "vrhunska-hrvatska",
@@ -311,6 +320,10 @@ export const categories: Category[] = [
     intro:
       "Vintonic je gotovi pjenušavi koktel na bazi vina za sve koji žele brzo, jednostavno i konzistentno piće bez dodatne pripreme. Spaja svježinu pjenušca s citrusno-gorkastim tonik profilom, pa daje dojam pravog koktela uz praktičnost gotovog proizvoda. Najbolje poslužen dobro rashlađen.",
     introColumns: 2,
+    introParts: [
+      "Vintonic je gotovi pjenušavi koktel na bazi vina za sve koji žele brzo, jednostavno i konzistentno piće bez dodatne pripreme.",
+      "Spaja svježinu pjenušca s citrusno-gorkastim tonik profilom, pa daje dojam pravog koktela uz praktičnost gotovog proizvoda. Najbolje poslužen dobro rashlađen.",
+    ],
   },
 ];
 

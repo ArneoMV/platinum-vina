@@ -1,4 +1,3 @@
-import { cn } from "@/lib/cn";
 import { WineCard } from "@/components/molecules/WineCard";
 import { getCategory, getWinesByCategory } from "@/data/wines";
 import type { WineCategory } from "@/data/wines";
@@ -26,17 +25,26 @@ export function CategorySection({ slug }: CategorySectionProps) {
         <h2 className="headline-m md:headline-l text-[var(--color-fg)]">
           {category.label}
         </h2>
-        <p
-          className={cn(
-            "body-big-regular mt-2 text-[var(--color-neutral-700)]",
-            // Longer intros (vranac, vintonic) flow across two columns on md+.
-            twoColIntro
-              ? "max-w-[78ch] md:columns-2 md:gap-x-12"
-              : "max-w-[70ch]",
-          )}
-        >
-          {category.intro}
-        </p>
+        {twoColIntro && category.introParts ? (
+          // Full-width two-column intro (vranac, vintonic): two equal 1fr
+          // columns with a 64px gap via the new design-system token (gap-xl);
+          // stacks to a single column on small. mt-2 preserves the existing
+          // title → intro spacing.
+          <div className="mt-2 grid grid-cols-1 gap-xl md:grid-cols-2">
+            {category.introParts.map((part, index) => (
+              <p
+                key={index}
+                className="body-big-regular text-[var(--color-neutral-700)]"
+              >
+                {part}
+              </p>
+            ))}
+          </div>
+        ) : (
+          <p className="body-big-regular mt-2 max-w-[70ch] text-[var(--color-neutral-700)]">
+            {category.intro}
+          </p>
+        )}
         {category.badge ? (
           // Non-interactive chip-styled badge (e.g. the vrhunska 30% rabat note).
           <span className="body-md-semibold mt-5 inline-block rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-1.5 text-[var(--color-fg)]">

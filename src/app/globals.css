@@ -32,6 +32,16 @@
   /* Fonts — next/font sets --font-pt-serif / --font-open-sans on <html>. */
   --font-serif: var(--font-pt-serif);
   --font-sans: var(--font-open-sans);
+
+  /* Named spacing scale (design system). Prefer gap-md / mt-lg / space-y-xl
+     over raw numbers going forward. Tailwind v4 auto-generates the spacing
+     utilities (gap-*, mt-*, p-*, space-y-*, …) from these --spacing-* tokens;
+     the numeric scale (gap-6, mt-2, …) is unaffected. */
+  --spacing-xs: 8px; /* title → intro */
+  --spacing-sm: 16px; /* hero title → lead */
+  --spacing-md: 24px; /* intro → grid, card gap */
+  --spacing-lg: 32px;
+  --spacing-xl: 64px; /* between sections, two-column intro gap */
 }
 
 @layer base {
