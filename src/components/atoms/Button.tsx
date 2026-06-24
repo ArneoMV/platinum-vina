@@ -5,12 +5,7 @@ import type {
 } from "react";
 import { cn } from "@/lib/cn";
 
-export type ButtonVariant = "solid" | "outline" | "chip";
-export type ButtonSize = "sm" | "md" | "lg";
-
 type CommonProps = {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
   className?: string;
   children?: ReactNode;
 };
@@ -28,39 +23,23 @@ type ButtonAsAnchor = CommonProps &
 
 export type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 
-const base =
-  "inline-flex items-center justify-center gap-2 font-semibold whitespace-nowrap " +
-  "cursor-pointer select-none transition-colors duration-150 " +
+// One unified look for every button/link across the site: the outline "chip"
+// design from Figma — white fill, hairline neutral-500 border, neutral-800
+// body-big-semibold label, fixed 8/16 padding, modest radius. There is no
+// longer a solid/outline/chip distinction or a size scale; padding and type
+// are fixed, so those props were removed rather than left as no-ops.
+const styles =
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap " +
+  "cursor-pointer select-none body-big-semibold rounded-md px-4 py-2 " +
+  "border border-[var(--color-neutral-500)] bg-[var(--color-neutral-white)] " +
+  "text-[var(--color-neutral-800)] transition-colors duration-150 " +
+  "hover:border-[var(--color-neutral-600)] hover:bg-[var(--color-neutral-100)] " +
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-fg)] " +
   "focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)] " +
   "disabled:cursor-not-allowed disabled:opacity-50 disabled:pointer-events-none";
 
-const variants: Record<ButtonVariant, string> = {
-  // Dark fill, white text — future contact submit.
-  solid:
-    "rounded-md bg-[var(--color-neutral-900)] text-[var(--color-neutral-white)] hover:bg-[var(--color-neutral-800)]",
-  // White bg, hairline border, dark text — the default.
-  outline:
-    "rounded-md border border-[var(--color-border)] bg-[var(--color-neutral-white)] text-[var(--color-fg)] hover:bg-[var(--color-surface)]",
-  // Small outline pill for category filters.
-  chip: "rounded-full border border-[var(--color-border)] bg-[var(--color-neutral-white)] text-[var(--color-fg)] hover:bg-[var(--color-surface)]",
-};
-
-const sizes: Record<ButtonSize, string> = {
-  sm: "px-3.5 py-1.5 text-sm",
-  md: "px-5 py-2.5 text-sm",
-  lg: "px-7 py-3 text-base",
-};
-
-export function Button({
-  variant = "outline",
-  size = "md",
-  className,
-  children,
-  href,
-  ...rest
-}: ButtonProps) {
-  const classes = cn(base, variants[variant], sizes[size], className);
+export function Button({ className, children, href, ...rest }: ButtonProps) {
+  const classes = cn(styles, className);
 
   if (href !== undefined) {
     return (

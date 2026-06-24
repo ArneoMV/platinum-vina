@@ -17,10 +17,16 @@ export function Hero() {
             modernih Vintonic koktela.
           </p>
         </div>
-        {/* Constrained width on lg so the chips wrap into a couple of rows,
-            top-aligned to the heading per the mockup. */}
-        <div className="lg:max-w-[22rem] lg:shrink-0 lg:pt-2">
-          <CategoryChips />
+        {/*
+          Right cluster. The lg max-width is tuned to the combined width of the
+          three top chips (Velika pakiranja / Atraktivne sorte / Vranac) plus
+          their two 8px gaps, so flex-wrap breaks the row 3 + 2 with no manual
+          <br>; the wider 4th chip (Vrhunska Hrvatska vina) is forced onto a
+          second row. align="end" right-aligns the rows on lg+ while small
+          screens stack and wrap left. lg:pt-2 top-aligns to the heading.
+        */}
+        <div className="lg:max-w-140 lg:shrink-0 lg:pt-2">
+          <CategoryChips align="end" />
         </div>
       </div>
     </section>

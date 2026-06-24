@@ -15,11 +15,7 @@ export function ContactCta() {
             ćemo pripremiti ponudu prilagođenu vašim potrebama.
           </p>
           <div className="mt-8">
-            <Button
-              variant="solid"
-              size="lg"
-              href="mailto:lidija.samardzija@platinum-vina.hr?subject=Upit%20za%20ponudu"
-            >
+            <Button href="mailto:lidija.samardzija@platinum-vina.hr?subject=Upit%20za%20ponudu">
               Zatraži ponudu
             </Button>
           </div>
