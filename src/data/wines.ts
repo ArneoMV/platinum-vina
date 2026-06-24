@@ -5,8 +5,7 @@
 // Notes:
 // - karakteristike (tasting profile) is intentionally left UNPOPULATED for now;
 //   it will be filled in a later task.
-// - Every image.src points at the temporary placeholder bottle; the real
-//   per-wine artwork (/assets/wines/<id>.png) is to be swapped in later.
+// - image.src points at the real per-wine artwork at /assets/wines/<id>.png.
 
 export type WineCategory =
   | "velika-pakiranja"
@@ -64,7 +63,7 @@ export const wines: Wine[] = [
     alkohol: 12.5,
     variant: "light",
     image: {
-      src: "/assets/wines/_placeholder-bottle.png", // TODO real image: /assets/wines/chardonnay-riesling-italico-2l.png
+      src: "/assets/wines/chardonnay-riesling-italico-2l.png",
       alt: "Boca – Chardonnay & Riesling Italico 2L",
     },
   },
@@ -78,7 +77,7 @@ export const wines: Wine[] = [
     alkohol: 12.5,
     variant: "dark",
     image: {
-      src: "/assets/wines/_placeholder-bottle.png", // TODO real image: /assets/wines/merlot-cabernet-sauvignon-2l.png
+      src: "/assets/wines/merlot-cabernet-sauvignon-2l.png",
       alt: "Boca – Merlot & Cabernet Sauvignon 2L",
     },
   },
@@ -92,7 +91,7 @@ export const wines: Wine[] = [
     alkohol: 12.5,
     variant: "dark",
     image: {
-      src: "/assets/wines/_placeholder-bottle.png", // TODO real image: /assets/wines/vranac-2l.png
+      src: "/assets/wines/vranac-2l.png",
       alt: "Boca – Vranac 2L",
     },
   },
@@ -108,7 +107,7 @@ export const wines: Wine[] = [
     alkohol: 11.5,
     variant: "light",
     image: {
-      src: "/assets/wines/_placeholder-bottle.png", // TODO real image: /assets/wines/zeleni-veltlinac-1l.png
+      src: "/assets/wines/zeleni-veltlinac-1l.png",
       alt: "Boca – Zeleni Veltlinac 1L",
     },
   },
@@ -122,7 +121,7 @@ export const wines: Wine[] = [
     alkohol: 11.5,
     variant: "light",
     image: {
-      src: "/assets/wines/_placeholder-bottle.png", // TODO real image: /assets/wines/muskat-ottonel-075l.png
+      src: "/assets/wines/muskat-ottonel-075l.png",
       alt: "Boca – Muškat Ottonel 0,75L",
     },
   },
@@ -138,7 +137,7 @@ export const wines: Wine[] = [
     alkohol: 13.5,
     variant: "dark",
     image: {
-      src: "/assets/wines/_placeholder-bottle.png", // TODO real image: /assets/wines/vranac-075l.png
+      src: "/assets/wines/vranac-075l.png",
       alt: "Boca – Vranac 0,75L",
     },
   },
@@ -152,7 +151,7 @@ export const wines: Wine[] = [
     alkohol: 13.5,
     variant: "dark",
     image: {
-      src: "/assets/wines/_placeholder-bottle.png", // TODO real image: /assets/wines/vranac-1l.png
+      src: "/assets/wines/vranac-1l.png",
       alt: "Boca – Vranac 1L",
     },
   },
@@ -166,7 +165,7 @@ export const wines: Wine[] = [
     alkohol: 13.5,
     variant: "dark",
     image: {
-      src: "/assets/wines/_placeholder-bottle.png", // TODO real image: /assets/wines/vranac-3l-bib.png
+      src: "/assets/wines/vranac-3l-bib.png",
       alt: "Boca – Vranac 3L",
     },
   },
@@ -182,7 +181,7 @@ export const wines: Wine[] = [
     alkohol: 12.5,
     variant: "light",
     image: {
-      src: "/assets/wines/_placeholder-bottle.png", // TODO real image: /assets/wines/grasevina-075l.png
+      src: "/assets/wines/grasevina-075l.png",
       alt: "Boca – Graševina 0,75L",
     },
   },
@@ -196,7 +195,7 @@ export const wines: Wine[] = [
     alkohol: 12,
     variant: "light",
     image: {
-      src: "/assets/wines/_placeholder-bottle.png", // TODO real image: /assets/wines/malvazija-075l.png
+      src: "/assets/wines/malvazija-075l.png",
       alt: "Boca – Malvazija 0,75L",
     },
   },
@@ -210,7 +209,7 @@ export const wines: Wine[] = [
     alkohol: 13.5,
     variant: "dark",
     image: {
-      src: "/assets/wines/_placeholder-bottle.png", // TODO real image: /assets/wines/plavac-mali-075l.png
+      src: "/assets/wines/plavac-mali-075l.png",
       alt: "Boca – Plavac mali 0,75L",
     },
   },
@@ -226,7 +225,7 @@ export const wines: Wine[] = [
     variant: "custom",
     background: "#F3F1EC",
     image: {
-      src: "/assets/wines/_placeholder-bottle.png", // TODO real image: /assets/wines/vintonic-classic.png
+      src: "/assets/wines/vintonic-classic.png",
       alt: "Boca – Classic 0,75L",
     },
   },
@@ -240,7 +239,7 @@ export const wines: Wine[] = [
     variant: "custom",
     background: "#FBF4DB",
     image: {
-      src: "/assets/wines/_placeholder-bottle.png", // TODO real image: /assets/wines/vintonic-lemonello.png
+      src: "/assets/wines/vintonic-lemonello.png",
       alt: "Boca – Lemonello 0,75L",
     },
   },
@@ -254,7 +253,7 @@ export const wines: Wine[] = [
     variant: "custom",
     background: "#E6F2EC",
     image: {
-      src: "/assets/wines/_placeholder-bottle.png", // TODO real image: /assets/wines/vintonic-mojito.png
+      src: "/assets/wines/vintonic-mojito.png",
       alt: "Boca – Mojito 0,75L",
     },
   },
@@ -268,7 +267,7 @@ export const wines: Wine[] = [
     variant: "custom",
     background: "#F7E9EC",
     image: {
-      src: "/assets/wines/_placeholder-bottle.png", // TODO real image: /assets/wines/vintonic-rose.png
+      src: "/assets/wines/vintonic-rose.png",
       alt: "Boca – Rosé 0,75L",
     },
   },

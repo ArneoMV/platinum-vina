@@ -2,7 +2,8 @@ import { cn } from "@/lib/cn";
 
 export type LogoSize = "sm" | "md" | "lg";
 // "dark" = dark ink for light backgrounds (default); "light" = white ink for
-// the dark footer. Both crown (fill) and wordmark follow currentColor.
+// the dark footer. The inlined logo paths use fill="currentColor", so the tone
+// just sets the text colour and the whole lockup follows.
 export type LogoTone = "dark" | "light";
 
 type LogoProps = {
@@ -11,44 +12,48 @@ type LogoProps = {
   className?: string;
 };
 
-const crownPx: Record<LogoSize, number> = { sm: 18, md: 26, lg: 38 };
-const wordmarkClass: Record<LogoSize, string> = {
-  sm: "heading-xs",
-  md: "heading-s",
-  lg: "heading-l",
+// Real Platinum Vina lockup (crown + "PLATINUM VINA"), inlined from
+// public/assets/platinum-vina-logo.svg. Fixed aspect ratio 90:64; the box is
+// sized by `size` and the default preserveAspectRatio keeps it undistorted.
+const dims: Record<LogoSize, { w: number; h: number }> = {
+  sm: { w: 56, h: 40 },
+  md: { w: 73, h: 52 },
+  lg: { w: 113, h: 80 },
 };
+
 const toneClass: Record<LogoTone, string> = {
   dark: "text-[var(--color-fg)]",
   light: "text-[var(--color-footer-fg)]",
 };
 
 export function Logo({ size = "md", tone = "dark", className }: LogoProps) {
+  const { w, h } = dims[size];
   return (
-    <span
-      className={cn(
-        "inline-flex items-center gap-2.5",
-        toneClass[tone],
-        className,
-      )}
+    <svg
+      width={w}
+      height={h}
+      viewBox="0 0 90 64"
+      fill="none"
+      role="img"
+      aria-label="Platinum Vina"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn(toneClass[tone], className)}
     >
-      {/*
-        Placeholder crown — simple inline SVG, inherits currentColor.
-        TODO: replace with the real /public/assets/logo.svg when provided.
-      */}
-      <svg
-        width={crownPx[size]}
-        height={crownPx[size]}
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        aria-hidden="true"
-        focusable="false"
-      >
-        <path d="M3 6 L8 12 L12 4 L16 12 L21 6 L19 18 L5 18 Z" />
-        <rect x="4.5" y="19" width="15" height="2.2" rx="0.4" />
-      </svg>
-      <span className={cn(wordmarkClass[size], "uppercase tracking-[0.16em]")}>
-        Platinum Vina
-      </span>
-    </span>
+      <path d="M2.1791 40.8657C3.28358 40.8657 4.14925 40.9851 4.74627 41.1642C5.34328 41.3433 5.8209 41.6717 6.20895 42.1195C6.59701 42.5672 6.77612 43.1045 6.77612 43.7911C6.77612 44.3881 6.62687 44.8956 6.38806 45.3135C6.1194 45.7612 5.73134 46.0896 5.25373 46.2986C4.74627 46.5374 3.91045 46.5971 2.68657 46.5971H1.55224V48.9851C1.55224 49.4627 1.55224 49.7015 1.55224 50.0598V51.7015H0V48.9851V43.7314V40.8657H2.1791ZM5.10448 43.9105C5.10448 43.015 4.89552 42.3583 4.44776 41.9702C4 41.5523 3.31343 41.3433 2.32836 41.3433C1.97015 41.3433 1.70149 41.3732 1.52239 41.3732V46.2687H2.26866C2.89552 46.2687 3.37313 46.2687 3.76119 46.1195C4.14925 46.0001 4.47761 45.7911 4.71642 45.3732C4.98507 44.9553 5.10448 44.4777 5.10448 43.9105Z" fill="currentColor" />
+      <path d="M18.538 51.3433V51.7015H11.0156V48.8956V43.5821V40.8657H12.5679V51.3433H18.538Z" fill="currentColor" />
+      <path d="M27.9113 47.7314H23.9411L22.4187 51.7015H21.8516L26.3292 40.8657H26.6575L31.2545 51.7015H29.5531C28.9859 50.2986 28.7471 49.7314 28.7471 49.7314L27.9113 47.7314ZM27.7919 47.3732L25.9113 42.8359L24.0605 47.3732H27.7919Z" fill="currentColor" />
+      <path d="M41.7619 41.2239H39.0157H37.2545V48.8359V51.7015H35.7022V48.8359V41.2239H34.1201H31.2246L31.2545 40.8657H41.7619V41.2239Z" fill="currentColor" />
+      <path d="M47.2544 40.8657V43.5523V48.8657V51.7015H45.7021V48.8657V43.5523V40.8657H47.2544Z" fill="currentColor" />
+      <path d="M60.1797 40.8657V42.8657V51.7015H59.8812L52.3289 41.7314V49.0448V51.4329H51.9707V49.0448V43.4627V40.8657H53.5826L59.7319 49.0747V42.7463V40.8657H60.1797Z" fill="currentColor" />
+      <path d="M73.4635 40.8657V43.403V46.9553C73.4635 47.8508 73.374 48.5374 73.2844 48.9851C73.1948 49.4329 72.956 49.8508 72.5978 50.2687C72.2695 50.6866 71.7919 51.0448 71.165 51.2836C70.5381 51.5523 69.8516 51.6717 69.0456 51.6717C68.0904 51.6717 67.2844 51.4926 66.6277 51.1941C65.971 50.8657 65.5232 50.4478 65.2545 49.9404C64.956 49.4329 64.8068 48.7463 64.8665 47.8806L64.9262 46.7762V43.4627V40.8657H66.4486V43.4627V46.8359C66.4486 48.0001 66.4486 48.8359 66.5381 49.3135C66.6575 49.8209 66.8963 50.2389 67.4038 50.5971C67.9113 50.9851 68.568 51.1642 69.4038 51.1642C70.0605 51.1642 70.6575 51.0448 71.1948 50.7762C71.7322 50.5374 72.1501 50.2389 72.3889 49.8807C72.6575 49.4926 72.8366 49.1344 72.8963 48.7463C72.956 48.3583 73.0456 47.7612 73.0456 46.9254V43.2836V40.8657H73.4635Z" fill="currentColor" />
+      <path d="M87.523 48.806V41.9105L83.2245 51.7015H82.8364L78.5379 41.9105V48.2389V51.7015H78.1797V48.209V43.4926V40.8657H79.6722L83.6424 49.8508L87.5827 40.8657H89.0752V43.4926V48.806V51.7015H87.523V48.806Z" fill="currentColor" />
+      <path d="M35.3442 55.1343L34.18 57.8805L31.6128 63.9999H31.1949L28.2397 57.1343L28.1501 56.9552C28.0904 56.8358 28.0606 56.6865 27.971 56.5373C27.9113 56.388 27.8516 56.2686 27.7919 56.1492L27.374 55.1343H28.6576L29.4039 56.8059L31.8815 62.5671L33.8815 57.791C34.0009 57.5223 34.0904 57.2537 34.18 57.0149L34.9263 55.1343H35.3442Z" fill="currentColor" />
+      <path d="M40.1801 55.1343V57.3432V61.7014V63.9999H38.8965V61.7014V57.3432V55.1343H40.1801Z" fill="currentColor" />
+      <path d="M50.7467 55.1343V56.7761V63.9999H50.5079L44.3288 55.8507V61.8507V63.7611H44.0303V61.8507V57.2537V55.1343H45.3736L50.3885 61.8805V56.6865V55.1343H50.7467Z" fill="currentColor" />
+      <path d="M59.2541 60.7462H56.0003L54.7764 63.9999H54.2988L57.9406 55.1343H58.2093L61.9705 63.9999H60.5973C60.1197 62.8656 59.9406 62.388 59.9406 62.388L59.2541 60.7462ZM59.1347 60.4477L57.5824 56.7462L56.06 60.4477H59.1347Z" fill="currentColor" />
+      <path d="M45.8216 25.7612L44.8067 26.597L43.7918 25.7612L37.7619 20.7463L44.5679 7.46269L51.5231 21.0149L45.8216 25.7612ZM68.1798 7.19403L54.2097 18.806L46.4783 3.73134L44.5679 0L42.6574 3.73134L35.0754 18.5075L21.4336 7.19403L17.2246 3.70149L18.3589 9.07463L21.6127 24.5373H25.1052L22.5977 12.5672L33.4933 21.6119L36.1798 23.8507L38.4783 25.7612L42.1798 28.8358L42.5977 29.194L44.8366 31.0448L47.0754 29.194L47.4933 28.8358L51.1948 25.7612L53.1351 24.1493L55.8216 21.9104L67.0754 12.5672L64.5679 24.5373H68.0604L71.3142 9.07463L72.4485 3.70149L68.1798 7.19403Z" fill="currentColor" />
+      <path d="M29.5824 29.1641H33.4331L35.1644 25.7611L35.5824 24.9551L32.8958 22.7163L31.3435 25.7611H25.3435H21.8809L22.5973 29.1641H26.06H29.5824Z" fill="currentColor" />
+      <path d="M31.3435 25.7611H25.3435H21.8809L22.5973 29.1641H33.4331L35.1644 25.7611L35.5824 24.9551L32.8958 22.7163L31.3435 25.7611Z" fill="currentColor" />
+    </svg>
   );
 }
