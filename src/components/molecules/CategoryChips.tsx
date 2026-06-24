@@ -10,7 +10,7 @@ import { categories } from "@/data/wines";
 export function CategoryChips() {
   return (
     <nav aria-label="Filtriraj po kategoriji">
-      <ul className="flex flex-wrap gap-3">
+      <ul className="flex flex-wrap gap-2">
         {categories.map((category) => (
           <li key={category.slug}>
             <Button href={`#${category.slug}`} variant="chip" size="sm">

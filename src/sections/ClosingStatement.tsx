@@ -4,7 +4,7 @@ import { CategoryChips } from "@/components/molecules/CategoryChips";
 // chips repeated for quick jump-back navigation. Server component.
 export function ClosingStatement() {
   return (
-    <section className="border-t border-[var(--color-divider)] py-12 md:py-16">
+    <section>
       <h2 className="headline-m md:headline-l text-[var(--color-fg)]">
         Jedna ponuda,
         <br />
@@ -12,7 +12,7 @@ export function ClosingStatement() {
       </h2>
       {/* Longer copy flows across two columns on md+ (same treatment as the
           Vranac/Vintonic intros). */}
-      <p className="body-big-regular mt-4 max-w-[78ch] text-[var(--color-neutral-700)] md:columns-2 md:gap-x-12">
+      <p className="body-big-regular mt-2 max-w-[78ch] text-[var(--color-neutral-700)] md:columns-2 md:gap-x-12">
         Ova selekcija okuplja vina za svaku priliku i svaki stol. Tu su
         praktična velika pakiranja za ugostiteljstvo, atraktivne sorte iz
         Mađarske i Makedonije, prepoznatljivi Vranac koji je već petnaest godina

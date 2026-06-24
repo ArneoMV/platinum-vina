@@ -13,7 +13,7 @@ export function Footer() {
       id="kontakt"
       className="bg-[var(--color-footer-bg)] text-[var(--color-footer-fg)]"
     >
-      <Container className="py-14 md:py-20">
+      <Container className="pt-16 pb-12">
         {/* Centered brand mark, white ink on dark. */}
         <div className="flex justify-center">
           <Logo size="md" tone="light" />
@@ -49,8 +49,8 @@ export function Footer() {
           </address>
         </div>
 
-        {/* BOTTOM bar — translucent light divider above. */}
-        <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+        {/* BOTTOM bar — large 124px gap above (Figma), translucent divider. */}
+        <div className="mt-[124px] flex flex-col gap-4 border-t border-white/10 pt-4 sm:flex-row sm:items-center sm:justify-between">
           <Link
             href="/politika-privatnosti"
             className={`body-md-regular text-[var(--color-neutral-500)] underline-offset-4 transition-colors hover:text-[var(--color-footer-fg)] hover:underline ${focusRing}`}

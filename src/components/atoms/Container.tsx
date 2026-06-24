@@ -6,12 +6,13 @@ type ContainerProps = {
   className?: string;
 };
 
-// Shared page-width primitive: centered, capped at 1200px, with responsive
-// horizontal gutters. The single source of truth for content width so Header,
-// Footer, and page <main> all align to the same column.
+// Shared page-width primitive: centered (max-width + auto margins), capped at
+// the Figma 1346px content width, with responsive horizontal gutters (24/32px).
+// The single source of truth for content width so Header, Footer, and page
+// <main> all align to the same column.
 export function Container({ children, className }: ContainerProps) {
   return (
-    <div className={cn("mx-auto w-full max-w-[1200px] px-6 md:px-8", className)}>
+    <div className={cn("mx-auto w-full max-w-[1346px] px-6 md:px-8", className)}>
       {children}
     </div>
   );

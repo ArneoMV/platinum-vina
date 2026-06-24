@@ -5,13 +5,13 @@ import { CategoryChips } from "@/components/molecules/CategoryChips";
 // Width/padding come from the layout Container; this only owns vertical rhythm.
 export function Hero() {
   return (
-    <section className="pb-10 md:pb-14">
+    <section>
       <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
         <div className="max-w-[60ch]">
           <h1 className="headline-l md:headline-xl text-[var(--color-fg)]">
             Vinska ponuda
           </h1>
-          <p className="body-big-regular mt-6 text-[var(--color-neutral-700)]">
+          <p className="body-big-regular mt-4 text-[var(--color-neutral-700)]">
             Pažljivo birana selekcija za 2026. Od velikih pakiranja za svaki
             dan, preko prepoznatljivog Vranca, do vrhunskih hrvatskih vina i
             modernih Vintonic koktela.

@@ -41,7 +41,9 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col">
         <Header />
         <main className="flex-1">
-          <Container className="py-10 md:py-16">{children}</Container>
+          {/* 64px top above the first section (Hero) and bottom before the
+              footer; the 64px BETWEEN sections is owned by page.tsx (space-y-16). */}
+          <Container className="py-16">{children}</Container>
         </main>
         <Footer />
       </body>

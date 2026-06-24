@@ -16,12 +16,10 @@ export function CategorySection({ slug }: CategorySectionProps) {
   const twoColIntro = category.introColumns === 2;
 
   return (
-    // scroll-mt-24 keeps the title clear of the ~59px sticky header on anchor
-    // jumps; border-t is the thin divider between sections.
-    <section
-      id={slug}
-      className="scroll-mt-24 border-t border-[var(--color-divider)] py-12 md:py-16"
-    >
+    // scroll-mt-24 keeps the title clear of the sticky header on anchor jumps.
+    // Between-section spacing (64px) is owned by page.tsx (space-y-16); no
+    // divider rule — the design separates sections with whitespace.
+    <section id={slug} className="scroll-mt-24">
       <div>
         {/* category.eyebrow is intentionally NOT rendered — the mockups have no
             eyebrow above section titles. The field stays in the data. */}
@@ -30,7 +28,7 @@ export function CategorySection({ slug }: CategorySectionProps) {
         </h2>
         <p
           className={cn(
-            "body-big-regular mt-4 text-[var(--color-neutral-700)]",
+            "body-big-regular mt-2 text-[var(--color-neutral-700)]",
             // Longer intros (vranac, vintonic) flow across two columns on md+.
             twoColIntro
               ? "max-w-[78ch] md:columns-2 md:gap-x-12"
@@ -47,7 +45,7 @@ export function CategorySection({ slug }: CategorySectionProps) {
         ) : null}
       </div>
 
-      <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {items.map((wine) => {
           const common = {
             name: wine.naziv,

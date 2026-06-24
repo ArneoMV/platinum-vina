@@ -4,8 +4,8 @@ import { Button } from "@/components/atoms/Button";
 // Closing CTA. There is no contact page — the action is a mailto.
 export function ContactCta() {
   return (
-    <section className="border-t border-[var(--color-divider)] py-12 md:py-16">
-      <div className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
+    <section>
+      <div className="grid items-center gap-8 md:grid-cols-2 md:gap-16">
         <div>
           <h2 className="headline-s md:headline-m text-[var(--color-fg)]">
             Zainteresirani za ovu ponudu?
@@ -14,7 +14,7 @@ export function ContactCta() {
             Za narudžbe, cjenike i uvjete paletne isporuke javite nam se. Rado
             ćemo pripremiti ponudu prilagođenu vašim potrebama.
           </p>
-          <div className="mt-6">
+          <div className="mt-8">
             <Button
               variant="solid"
               size="lg"

@@ -17,7 +17,7 @@ const FEATURES = [
 
 export function WhySelection() {
   return (
-    <section className="border-t border-[var(--color-divider)] py-12 md:py-16">
+    <section>
       <h2 className="headline-m md:headline-l text-[var(--color-fg)]">
         Zašto baš ova selekcija
       </h2>
