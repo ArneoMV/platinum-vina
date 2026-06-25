@@ -13,7 +13,7 @@ const focusRing =
 export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--color-divider)] bg-[var(--color-bg)]">
-      <Container className="flex items-center justify-between gap-4 py-4">
+      <Container className="flex items-center justify-between gap-sm py-sm">
         <Link
           href="/"
           aria-label="Platinum Vina – početna stranica"

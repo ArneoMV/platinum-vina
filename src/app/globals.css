@@ -33,15 +33,51 @@
   --font-serif: var(--font-pt-serif);
   --font-sans: var(--font-open-sans);
 
-  /* Named spacing scale (design system). Prefer gap-md / mt-lg / space-y-xl
-     over raw numbers going forward. Tailwind v4 auto-generates the spacing
-     utilities (gap-*, mt-*, p-*, space-y-*, …) from these --spacing-* tokens;
-     the numeric scale (gap-6, mt-2, …) is unaffected. */
-  --spacing-xs: 8px; /* title → intro */
-  --spacing-sm: 16px; /* hero title → lead */
-  --spacing-md: 24px; /* intro → grid, card gap */
-  --spacing-lg: 32px;
-  --spacing-xl: 64px; /* between sections, two-column intro gap */
+  /* Named spacing scale (design-system rhythm): xs8 / sm16 / md24 / lg32 / xl64.
+     Deliberately NOT under Tailwind's --spacing-* namespace — that namespace
+     also feeds the sizing scale, so naming these --spacing-md/-xl made
+     max-w-md/w-xl/h-lg resolve to these values and broke sections. Under
+     --space-* they no longer touch sizing; max-w-md etc. keep Tailwind's
+     defaults. The gap/margin/padding utilities are defined explicitly below. */
+  --space-xs: 8px; /* title → intro */
+  --space-sm: 16px; /* hero title → lead */
+  --space-md: 24px; /* intro → grid, card gap */
+  --space-lg: 32px;
+  --space-xl: 64px; /* between sections, two-column intro gap */
+}
+
+/* ===========================================================================
+   Spacing utilities — the canonical rhythm classes. Because --space-* lives
+   outside Tailwind's spacing namespace, these are declared explicitly (they do
+   NOT auto-generate). Prefer these over raw numbers. Only the variants the app
+   actually uses are defined; add more as needed. Element SIZES stay arbitrary
+   ([36rem], [250px], …) — this is a rhythm scale, not a size scale.
+   =========================================================================== */
+@utility gap-xs { gap: var(--space-xs); }
+@utility gap-sm { gap: var(--space-sm); }
+@utility gap-md { gap: var(--space-md); }
+@utility gap-lg { gap: var(--space-lg); }
+@utility gap-xl { gap: var(--space-xl); }
+
+@utility mt-xs { margin-top: var(--space-xs); }
+@utility mt-sm { margin-top: var(--space-sm); }
+@utility mt-md { margin-top: var(--space-md); }
+@utility mt-lg { margin-top: var(--space-lg); }
+
+@utility px-sm { padding-inline: var(--space-sm); }
+@utility px-lg { padding-inline: var(--space-lg); }
+@utility py-xs { padding-block: var(--space-xs); }
+@utility py-sm { padding-block: var(--space-sm); }
+@utility py-xl { padding-block: var(--space-xl); }
+@utility pt-sm { padding-top: var(--space-sm); }
+@utility pt-xl { padding-top: var(--space-xl); }
+
+/* Vertical rhythm between siblings — mirrors Tailwind's space-y (top margin on
+   every non-first child, so no leading/trailing margin). */
+@utility space-y-xl {
+  & > :not([hidden]) ~ :not([hidden]) {
+    margin-top: var(--space-xl);
+  }
 }
 
 @layer base {

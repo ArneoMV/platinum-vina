@@ -30,8 +30,8 @@ export type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 // scale; padding and type are fixed, so those props were removed rather than
 // left as no-ops.
 const styles =
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap " +
-  "cursor-pointer select-none body-md-semibold px-4 py-2 " +
+  "inline-flex items-center justify-center gap-xs whitespace-nowrap " +
+  "cursor-pointer select-none body-md-semibold px-sm py-xs " +
   "border border-[var(--color-neutral-500)] bg-[var(--color-neutral-white)] " +
   "text-[var(--color-neutral-800)] transition-colors duration-150 " +
   "hover:border-[var(--color-neutral-600)] hover:bg-[var(--color-neutral-100)] " +

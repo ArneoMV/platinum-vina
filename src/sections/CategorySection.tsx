@@ -16,7 +16,7 @@ export function CategorySection({ slug }: CategorySectionProps) {
 
   return (
     // scroll-mt-24 keeps the title clear of the sticky header on anchor jumps.
-    // Between-section spacing (64px) is owned by page.tsx (space-y-16); no
+    // Between-section spacing (64px) is owned by page.tsx (space-y-xl); no
     // divider rule — the design separates sections with whitespace.
     <section id={slug} className="scroll-mt-24">
       {/* category.eyebrow is intentionally NOT rendered — the mockups have no
@@ -49,7 +49,7 @@ export function CategorySection({ slug }: CategorySectionProps) {
             </p>
             {category.badge ? (
               // Non-interactive chip-styled badge (e.g. the vrhunska 30% rabat).
-              <span className="body-md-semibold mt-5 inline-block rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-1.5 text-[var(--color-fg)]">
+              <span className="body-md-semibold mt-5 inline-block rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-sm py-1.5 text-[var(--color-fg)]">
                 {category.badge}
               </span>
             ) : null}

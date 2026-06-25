@@ -20,7 +20,7 @@ export function CategoryChips({ align = "start" }: CategoryChipsProps) {
     <nav aria-label="Filtriraj po kategoriji">
       <ul
         className={cn(
-          "flex flex-wrap gap-2",
+          "flex flex-wrap gap-xs",
           align === "end" ? "justify-start lg:justify-end" : "justify-start",
         )}
       >

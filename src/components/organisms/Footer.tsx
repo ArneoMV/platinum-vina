@@ -13,23 +13,22 @@ export function Footer() {
       id="kontakt"
       className="bg-[var(--color-footer-bg)] text-[var(--color-footer-fg)]"
     >
-      <Container className="pt-16 pb-12">
+      <Container className="pt-xl pb-12">
         {/* Centered brand mark, white ink on dark. */}
         <div className="flex justify-center">
           <Logo size="md" tone="light" />
         </div>
 
         {/* TOP zone — heading + intro (left), contact (right). */}
-        <div className="mt-12 grid gap-10 md:grid-cols-2 md:gap-16">
+        <div className="mt-12 grid gap-10 md:grid-cols-2 md:gap-xl">
           <div>
             <h2 className="headline-m md:headline-l">
               Pridruži se Platinum klubu
             </h2>
-            {/* max-w-[28rem], NOT max-w-md: the --spacing-md design token
-                shadows Tailwind's t-shirt scale, so max-w-md would resolve to
-                24px (var(--spacing-md)) and crush this paragraph to one word
-                per line. */}
-            <p className="body-big-regular mt-4 max-w-[28rem] text-[var(--color-neutral-500)]">
+            {/* Explicit 28rem (Tailwind's old max-w-md default). Kept arbitrary
+                from when --spacing-md shadowed the sizing scale; tokens now live
+                under --space-* so max-w-md would be safe again too. */}
+            <p className="body-big-regular mt-sm max-w-[28rem] text-[var(--color-neutral-500)]">
               Zainteresirani za ovu ponudu? Za narudžbe, cjenike i uvjete
               paletne isporuke javite nam se. Rado ćemo pripremiti ponudu
               prilagođenu vašim potrebama.
@@ -41,7 +40,7 @@ export function Footer() {
             <p className="body-md-regular mt-1 text-[var(--color-neutral-500)]">
               Vidovčica 6, 10000 Zagreb
             </p>
-            <p className="body-big-semibold mt-6">Lidija Samardžija, CEO</p>
+            <p className="body-big-semibold mt-md">Lidija Samardžija, CEO</p>
             <p className="mt-1">
               <a
                 href="mailto:lidija.samardzija@platinum-vina.hr"
@@ -54,7 +53,7 @@ export function Footer() {
         </div>
 
         {/* BOTTOM bar — large 124px gap above (Figma), translucent divider. */}
-        <div className="mt-[124px] flex flex-col gap-4 border-t border-white/10 pt-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-[124px] flex flex-col gap-sm border-t border-white/10 pt-sm sm:flex-row sm:items-center sm:justify-between">
           <Link
             href="/politika-privatnosti"
             className={`body-md-regular text-[var(--color-neutral-500)] underline-offset-4 transition-colors hover:text-[var(--color-footer-fg)] hover:underline ${focusRing}`}

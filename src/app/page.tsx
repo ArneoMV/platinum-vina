@@ -6,10 +6,10 @@ import { ContactCta } from "@/sections/ContactCta";
 
 // Homepage: hero + the five catalog category sections + the three closing
 // blocks. Width/padding come from the layout <main>/Container; the uniform
-// 64px gap between every major section is owned here via space-y-16.
+// 64px gap between every major section is owned here via space-y-xl.
 export default function Home() {
   return (
-    <div className="space-y-16">
+    <div className="space-y-xl">
       <Hero />
       <CategorySection slug="velika-pakiranja" />
       <CategorySection slug="atraktivne-sorte" />

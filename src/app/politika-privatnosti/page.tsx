@@ -29,11 +29,11 @@ export default function PolitikaPrivatnostiPage() {
         ← Povratak na početnu
       </Link>
 
-      <h1 className="headline-l md:headline-xl mt-6 text-[var(--color-fg)]">
+      <h1 className="headline-l md:headline-xl mt-md text-[var(--color-fg)]">
         Politika privatnosti
       </h1>
 
-      <p className="body-big-regular mt-4 text-[var(--color-neutral-700)]">
+      <p className="body-big-regular mt-sm text-[var(--color-neutral-700)]">
         Ova internetska stranica služi isključivo za predstavljanje vinske
         ponude. Na stranici se ne obavlja online prodaja niti se prikupljaju
         podaci putem obrazaca.

@@ -64,21 +64,21 @@ export function WineCard(props: WineCardProps) {
           alt={image.alt}
           fill
           sizes="(min-width: 1024px) 360px, (min-width: 768px) 45vw, 90vw"
-          className="object-contain px-8 py-4 transition-transform duration-300 ease-out group-hover:scale-105"
+          className="object-contain px-lg py-sm transition-transform duration-300 ease-out group-hover:scale-105"
         />
       </div>
 
       {/* Caption — 16px below the image, then 8px between each line. */}
-      <div className="mt-4 text-center">
+      <div className="mt-sm text-center">
         <h3 className="headline-xxs text-[var(--color-neutral-999)]">{name}</h3>
         {/* Description omitted entirely when absent (Vintonic) — no gap. */}
         {descriptor ? (
-          <p className="body-big-regular mt-2 text-[var(--color-neutral-999)]">
+          <p className="body-big-regular mt-xs text-[var(--color-neutral-999)]">
             {descriptor}
           </p>
         ) : null}
         <WineMeta
-          className="mt-2"
+          className="mt-xs"
           price={price}
           volume={volume}
           alcohol={alcohol}

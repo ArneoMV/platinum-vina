@@ -42,8 +42,8 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">
           {/* 64px top above the first section (Hero) and bottom before the
-              footer; the 64px BETWEEN sections is owned by page.tsx (space-y-16). */}
-          <Container className="py-16">{children}</Container>
+              footer; the 64px BETWEEN sections is owned by page.tsx (space-y-xl). */}
+          <Container className="py-xl">{children}</Container>
         </main>
         <Footer />
       </body>
