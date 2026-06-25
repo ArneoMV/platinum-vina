@@ -28,7 +28,7 @@ type WineCardProps =
 function resolveAreaBg(variant: WineCardVariant, background?: string): string {
   if (variant === "dark") return "var(--color-neutral-999)";
   if (variant === "custom") return background ?? "var(--color-neutral-100)";
-  return "var(--color-neutral-100)";
+  return "var(--color-neutral-200)";
 }
 
 export function WineCard(props: WineCardProps) {
