@@ -25,7 +25,11 @@ export function Footer() {
             <h2 className="headline-m md:headline-l">
               Pridruži se Platinum klubu
             </h2>
-            <p className="body-big-regular mt-4 max-w-md text-[var(--color-neutral-500)]">
+            {/* max-w-[28rem], NOT max-w-md: the --spacing-md design token
+                shadows Tailwind's t-shirt scale, so max-w-md would resolve to
+                24px (var(--spacing-md)) and crush this paragraph to one word
+                per line. */}
+            <p className="body-big-regular mt-4 max-w-[28rem] text-[var(--color-neutral-500)]">
               Zainteresirani za ovu ponudu? Za narudžbe, cjenike i uvjete
               paletne isporuke javite nam se. Rado ćemo pripremiti ponudu
               prilagođenu vašim potrebama.

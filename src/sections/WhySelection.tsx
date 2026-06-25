@@ -41,7 +41,11 @@ export function WhySelection() {
           - lg+: absolutely overlaid over the LEFT of the photo, vertically
             centered; 2 cards on top + 1 below (grid-cols-2 with 3 items).
         */}
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:absolute lg:inset-y-0 lg:left-6 lg:mt-0 lg:w-[46%] lg:max-w-xl lg:content-center xl:left-10">
+        {/* NB: lg:max-w-[36rem] is written as an arbitrary value, NOT max-w-xl.
+            The design-system --spacing-xl token shadows Tailwind's t-shirt size
+            scale, so max-w-xl would resolve to 64px (var(--spacing-xl)) and
+            collapse these cards into the corner. */}
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:absolute lg:inset-y-0 lg:left-6 lg:mt-0 lg:w-[46%] lg:max-w-[36rem] lg:content-center xl:left-10">
           {FEATURES.map((feature) => (
             <div
               key={feature.title}

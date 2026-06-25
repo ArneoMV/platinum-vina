@@ -22,7 +22,10 @@ export function ContactCta() {
         </div>
 
         {/* Small placeholder image. TODO: swap in the real photo. */}
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:max-w-md md:justify-self-end">
+        {/* md:max-w-[28rem], NOT md:max-w-md: the --spacing-md token shadows
+            Tailwind's t-shirt scale, so max-w-md would resolve to 24px and
+            shrink this image to a sliver. */}
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:max-w-[28rem] md:justify-self-end">
           <Image
             src="/assets/backgrounds/_placeholder-wine-rack.jpg"
             alt="Vinoteka"
