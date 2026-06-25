@@ -7,27 +7,34 @@ const focusRing =
   "rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-footer-fg)] " +
   "focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-footer-bg)]";
 
+// Footer rebuilt to the Figma mockup. Dark background, light ink. Vertical
+// rhythm top→bottom: 64 (pt-xl) to the centered 100px vertical lockup, 48 to
+// the 2-column row (heading + intro left, contact right), 124 to the bottom
+// bar, 16 to the bottom edge. 64 and 16 map to the --space-* scale (pt-xl /
+// pb-[var(--space-sm)]); 48 and 124 don't, so they stay arbitrary.
 export function Footer() {
   return (
     <footer
       id="kontakt"
       className="bg-[var(--color-footer-bg)] text-[var(--color-footer-fg)]"
     >
-      <Container className="pt-xl pb-12">
-        {/* Centered brand mark, white ink on dark. */}
+      <Container className="pt-xl pb-[var(--space-sm)]">
+        {/* Centered vertical lockup (crown over PLATINUM / VINA), white ink,
+            100px tall. h-[100px] w-auto overrides the SVG's intrinsic size; the
+            viewBox keeps the aspect ratio (~141px wide). */}
         <div className="flex justify-center">
-          <Logo size="md" tone="light" />
+          <Logo tone="light" className="h-[100px] w-auto" />
         </div>
 
-        {/* TOP zone — heading + intro (left), contact (right). */}
-        <div className="mt-12 grid gap-10 md:grid-cols-2 md:gap-xl">
-          <div>
+        {/* Main row — heading + intro (left), contact (right). 48px below the
+            logo; splits into two columns on lg+ with a 64px gap, top-aligned. */}
+        <div className="mt-[48px] grid grid-cols-1 items-start gap-xl lg:grid-cols-2">
+          {/* min-w-0 lets the grid column shrink so the paragraph wraps normally
+              (guards the old one-word-per-line bug); max-w-[28rem] caps measure. */}
+          <div className="min-w-0">
             <h2 className="headline-m md:headline-l">
               Pridruži se Platinum klubu
             </h2>
-            {/* Explicit 28rem (Tailwind's old max-w-md default). Kept arbitrary
-                from when --spacing-md shadowed the sizing scale; tokens now live
-                under --space-* so max-w-md would be safe again too. */}
             <p className="body-big-regular mt-sm max-w-[28rem] text-[var(--color-neutral-500)]">
               Zainteresirani za ovu ponudu? Za narudžbe, cjenike i uvjete
               paletne isporuke javite nam se. Rado ćemo pripremiti ponudu
@@ -35,16 +42,16 @@ export function Footer() {
             </p>
           </div>
 
-          <address className="not-italic md:text-right">
-            <p className="body-big-semibold">Platinum d.o.o.</p>
-            <p className="body-md-regular mt-1 text-[var(--color-neutral-500)]">
-              Vidovčica 6, 10000 Zagreb
-            </p>
-            <p className="body-big-semibold mt-md">Lidija Samardžija, CEO</p>
-            <p className="mt-1">
+          {/* Contact — all heading-s, right-aligned on lg+ (left when stacked on
+              mobile). Two groups separated by ~24px (mt-md). */}
+          <address className="not-italic lg:text-right">
+            <p className="heading-s">Platinum d.o.o.</p>
+            <p className="heading-s">Vidovčica 6, 10000 Zagreb</p>
+            <p className="heading-s mt-md">Lidija Samardžija, CEO</p>
+            <p className="heading-s">
               <a
                 href="mailto:lidija.samardzija@platinum-vina.hr"
-                className={`body-md-regular text-[var(--color-footer-fg)] underline-offset-4 transition-opacity hover:underline ${focusRing}`}
+                className={`underline-offset-4 transition-opacity hover:underline ${focusRing}`}
               >
                 lidija.samardzija@platinum-vina.hr
               </a>
@@ -52,7 +59,8 @@ export function Footer() {
           </address>
         </div>
 
-        {/* BOTTOM bar — large 124px gap above (Figma), translucent divider. */}
+        {/* Bottom bar — 124px below the row, faint divider, space-between on
+            sm+; stacks on mobile. */}
         <div className="mt-[124px] flex flex-col gap-sm border-t border-white/10 pt-sm sm:flex-row sm:items-center sm:justify-between">
           <Link
             href="/politika-privatnosti"
