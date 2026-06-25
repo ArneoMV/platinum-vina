@@ -21,14 +21,13 @@ export function ContactCta() {
           </div>
         </div>
 
-        {/* Small placeholder image. TODO: swap in the real photo. */}
-        {/* Explicit 28rem (Tailwind's old md:max-w-md default). Kept arbitrary
-            from when --spacing-md shadowed the sizing scale; tokens now live
-            under --space-* so md:max-w-md would be safe again too. */}
+        {/* Wine-rack photo. md:max-w-[28rem] is an explicit value (Tailwind's
+            old max-w-md default) kept from when --spacing-md shadowed the sizing
+            scale; tokens now live under --space-* so max-w-md would be safe too. */}
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:max-w-[28rem] md:justify-self-end">
           <Image
-            src="/assets/backgrounds/_placeholder-wine-rack.jpg"
-            alt="Vinoteka"
+            src="/assets/images/slika-paket-vina.png"
+            alt="Paket vina"
             fill
             sizes="(min-width: 768px) 28rem, 100vw"
             className="object-cover"
