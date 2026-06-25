@@ -24,7 +24,7 @@ export function ContactCta() {
         {/* Wine-rack photo. md:max-w-[28rem] is an explicit value (Tailwind's
             old max-w-md default) kept from when --spacing-md shadowed the sizing
             scale; tokens now live under --space-* so max-w-md would be safe too. */}
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:max-w-[28rem] md:justify-self-end">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xs md:max-w-[28rem] md:justify-self-end">
           <Image
             src="/assets/images/slika-paket-vina.png"
             alt="Paket vina"

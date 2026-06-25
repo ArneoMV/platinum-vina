@@ -72,7 +72,7 @@ export function ClosingStatement() {
           bottom; the people overlay is bottom-anchored, right-of-center, and
           contained within the box. */}
       <div className="relative mt-[48px] aspect-[1040/264] w-full">
-        <div className="absolute inset-x-0 bottom-0 aspect-[1040/220] overflow-hidden rounded-2xl">
+        <div className="absolute inset-x-0 bottom-0 aspect-[1040/220] overflow-hidden rounded-xs">
           <Image
             src="/assets/images/slika-vinograd.png"
             alt="Vinograd"
