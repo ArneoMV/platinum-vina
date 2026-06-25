@@ -54,8 +54,8 @@ export function WineCard(props: WineCardProps) {
           `sizes` keeps the optimizer from over-fetching. */}
       <div
         className={cn(
-          "relative h-[250px] w-full overflow-hidden rounded-lg",
-          "transition-shadow duration-300 group-hover:shadow-lg",
+          "relative h-[250px] w-full overflow-hidden rounded-xs",
+          "transition-shadow duration-300",
         )}
         style={{ backgroundColor: areaBg }}
       >
