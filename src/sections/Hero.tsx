@@ -7,9 +7,12 @@ import { CategoryChips } from "@/components/molecules/CategoryChips";
 export function Hero() {
   return (
     <section>
-      <h1 className="headline-l md:headline-xl text-[var(--color-fg)]">
-        Vinska ponuda
-      </h1>
+      {/* The full-bleed LandingHero now owns the page's "Vinska Ponuda" <h1>;
+          this section is secondary, so it's an <h2> with a non-duplicate title
+          ("Naša ponuda" — placeholder, may change). */}
+      <h2 className="headline-l md:headline-xl text-[var(--color-fg)]">
+        Naša ponuda
+      </h2>
 
       {/* Unified row recipe (grid grid-cols-1 lg:grid-cols-2 gap-xl): lead in
           column 1, chips in column 2 (right-aligned on lg+ via align="end").

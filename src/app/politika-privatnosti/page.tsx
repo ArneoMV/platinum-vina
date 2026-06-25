@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Container } from "@/components/atoms/Container";
 
 export const metadata: Metadata = {
   title: "Politika privatnosti — Platinum Vina",
@@ -16,12 +17,14 @@ const linkClass =
   "focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[var(--color-fg)] " +
   "focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]";
 
-// Static content page. Header/Footer/<main>/Container come from the root
-// layout, so this only renders the article (constrained to a 70ch reading
-// measure — no extra Container/max-width wrapper).
+// Static content page. The root layout no longer wraps pages in a Container
+// (so the homepage hero can be full-bleed), so this page owns its own
+// <Container> (1100px + gutters + py-xl); the article is further constrained to
+// a 70ch reading measure inside it.
 export default function PolitikaPrivatnostiPage() {
   return (
-    <article className="max-w-[70ch]">
+    <Container className="py-xl">
+      <article className="max-w-[70ch]">
       <Link
         href="/"
         className="body-md-regular inline-flex items-center gap-1 text-[var(--color-muted)] underline-offset-4 transition-colors hover:text-[var(--color-fg)] hover:underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-fg)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
@@ -114,9 +117,10 @@ export default function PolitikaPrivatnostiPage() {
         </p>
       </section>
 
-      <p className="body-md-regular mt-10 text-[var(--color-muted)]">
-        Posljednje ažuriranje: lipanj 2026.
-      </p>
-    </article>
+        <p className="body-md-regular mt-10 text-[var(--color-muted)]">
+          Posljednje ažuriranje: lipanj 2026.
+        </p>
+      </article>
+    </Container>
   );
 }
