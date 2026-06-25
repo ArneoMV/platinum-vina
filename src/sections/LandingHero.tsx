@@ -11,17 +11,25 @@ import { useEffect, useRef } from "react";
 // Parallax (driven by scrollY, clamped to one viewport, GPU transforms):
 //   - leaves slide OUTWARD  (lisce-ljevo left, lisce-desno right)
 //   - text slides DOWN
-//   - person (bg-small) shrinks subtly → reveals bg-big behind it
+//   - person (bg-small) slides DOWN off the bottom edge with only a MICRO
+//     horizontal shrink → reveals bg-big from the top as the scene opens up
 //   - bg-big zooms in slowly for depth
 // Honors prefers-reduced-motion (no animation). bg-small is FULLY OPAQUE — no
 // mask/fade/glow; bg-big sits behind it purely as the parallax back layer that
-// the shrinking person reveals.
+// the sliding person reveals.
 
-// Tuning knobs (px per px of scroll, or scale per viewport of progress).
+// Tuning knobs (px per px of scroll, or px/scale per viewport of progress).
 const LEAF_SLIDE = 0.6; // leaves: translateX(±scrollY * LEAF_SLIDE)
 const TEXT_DROP = 0.35; // text:  translateY(scrollY * TEXT_DROP)
-const PERSON_SHRINK = 0.16; // person: scale 1 → 1 - PERSON_SHRINK over 1 vh
+const PERSON_DROP = 180; // person: translateY 0 → +PERSON_DROP px over 1 vh (slides off the bottom)
+const PERSON_MICRO_SHRINK = 0.028; // person: scale 1 → 1 - this over 1 vh — MICRO (~20px/side at 1440px render width)
 const BG_ZOOM = 0.06; // bg-big: scale 1 → 1 + BG_ZOOM over 1 vh
+
+// Static base nudge for the headline block: 50px RIGHT, 50px UP. Applied on the
+// OUTER text wrapper; the scroll parallax (TEXT_DROP) lives on the inner block,
+// so the base offset and the scroll motion compose on two separate elements
+// instead of overwriting a single `transform`.
+const TEXT_BASE_OFFSET = "translate3d(50px, -50px, 0)";
 
 export function LandingHero() {
   const bgBigRef = useRef<HTMLImageElement>(null);
@@ -49,7 +57,7 @@ export function LandingHero() {
       if (textRef.current)
         textRef.current.style.transform = `translate3d(0,${y * TEXT_DROP}px,0)`;
       if (personRef.current)
-        personRef.current.style.transform = `scale(${1 - p * PERSON_SHRINK})`;
+        personRef.current.style.transform = `translate3d(0,${p * PERSON_DROP}px,0) scale(${1 - p * PERSON_MICRO_SHRINK})`;
       if (bgBigRef.current)
         bgBigRef.current.style.transform = `scale(${1 + p * BG_ZOOM})`;
     };
@@ -96,14 +104,21 @@ export function LandingHero() {
         className="z-10 object-cover object-bottom will-change-transform"
       />
 
-      {/* Text box — above the scene, below the leaves. White serif headline with
-          a soft shadow for legibility over the vineyard. */}
+      {/* Text box — above the scene, below the leaves. OUTER wrapper centers the
+          block and applies the static base nudge (50px right / 50px up). INNER
+          block (textRef) carries the scroll parallax translateY, so the base
+          offset and the scroll motion live on separate elements and compose
+          cleanly instead of overwriting one transform. White serif headline
+          with a soft shadow for legibility over the vineyard. */}
       <div
-        ref={textRef}
-        data-layer="text"
-        className="absolute inset-0 z-20 flex items-center will-change-transform"
+        className="absolute inset-0 z-20 flex items-center"
+        style={{ transform: TEXT_BASE_OFFSET }}
       >
-        <div className="pl-[8%] pr-6">
+        <div
+          ref={textRef}
+          data-layer="text"
+          className="pl-[8%] pr-6 will-change-transform"
+        >
           <h1 className="headline-xl md:headline-xxl text-[var(--color-neutral-white)] [text-shadow:0_2px_28px_rgba(0,0,0,0.45)]">
             Vinska
             <br />
