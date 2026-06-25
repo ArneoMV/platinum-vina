@@ -15,7 +15,7 @@ export function WineMeta({ price, volume, alcohol, className }: WineMetaProps) {
 
   return (
     <p
-      className={cn("body-big-medium text-[var(--color-neutral-700)]", className)}
+      className={cn("body-big-medium info-text text-[var(--color-neutral-700)]", className)}
     >
       <span>{formatPrice(price)}</span>
       {sep}
