@@ -36,8 +36,8 @@ export function ClosingStatement() {
         pet svjetova vina
       </h2>
 
-      {/* Two-column intro — gap-xl (64px) between columns. mt-xs title → row. */}
-      <div className="mt-xs grid grid-cols-1 lg:grid-cols-2 gap-xl">
+      {/* Two-column intro — gap-xl (64px) between columns. mt-lg title → row. */}
+      <div className="mt-lg grid grid-cols-1 lg:grid-cols-2 gap-xl">
         {INTRO_PARTS.map((part, index) => (
           <p
             key={index}
@@ -48,8 +48,9 @@ export function ClosingStatement() {
         ))}
       </div>
 
-      {/* Three borderless feature blocks — serif sub-heading + body, gap-xl. */}
-      <div className="mt-xl grid grid-cols-1 md:grid-cols-3 gap-xl">
+      {/* Three borderless feature blocks — serif sub-heading + body, gap-xl.
+          mt-lg (32px) intro → features. */}
+      <div className="mt-lg grid grid-cols-1 md:grid-cols-3 gap-xl">
         {FEATURES.map((feature) => (
           <div key={feature.title}>
             <h3 className="headline-xs text-[var(--color-fg)]">
@@ -62,13 +63,16 @@ export function ClosingStatement() {
         ))}
       </div>
 
-      {/* Vineyard collage: the vineyard panorama fills a wide rounded panel
-          (object-cover), and the people cut-out (transparent PNG) is overlaid
-          right-of-center, bottom-anchored, and a touch taller than the band so
-          the group rises above it — reading as a single image. The wrapper is
-          NOT clipped, so the people can extend above the band. */}
-      <div className="relative mt-xl">
-        <div className="relative aspect-[1040/220] w-full overflow-hidden rounded-2xl">
+      {/* Vineyard collage. mt-[48px] (48px isn't in the 8/16/24/32/64 token
+          scale — kept arbitrary) sets the features → collage gap. The OUTER box
+          reserves headroom (aspect taller than the band) so the people cut-out
+          can rise above the green band — like Figma — while the WHOLE collage,
+          heads included, stays in normal flow and never overlaps the feature
+          text above. The vineyard panorama fills a rounded panel pinned to the
+          bottom; the people overlay is bottom-anchored, right-of-center, and
+          contained within the box. */}
+      <div className="relative mt-[48px] aspect-[1040/264] w-full">
+        <div className="absolute inset-x-0 bottom-0 aspect-[1040/220] overflow-hidden rounded-2xl">
           <Image
             src="/assets/images/slika-vinograd.png"
             alt="Vinograd"
@@ -78,7 +82,7 @@ export function ClosingStatement() {
           />
         </div>
         {/* Decorative overlay (alt=""). pointer-events-none so it never blocks. */}
-        <div className="pointer-events-none absolute bottom-0 right-[8%] aspect-[1551/880] w-[54%] sm:w-[46%] lg:w-[44%]">
+        <div className="pointer-events-none absolute bottom-0 right-[8%] aspect-[1551/880] w-[44%]">
           <Image
             src="/assets/images/osoba-02.png"
             alt=""

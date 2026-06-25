@@ -10,11 +10,11 @@ export function ContactCta() {
           <h2 className="headline-s md:headline-m text-[var(--color-fg)]">
             Zainteresirani za ovu ponudu?
           </h2>
-          <p className="body-big-regular mt-sm max-w-[55ch] text-[var(--color-neutral-700)]">
+          <p className="body-big-regular mt-xs max-w-[55ch] text-[var(--color-neutral-700)]">
             Za narudžbe, cjenike i uvjete paletne isporuke javite nam se. Rado
             ćemo pripremiti ponudu prilagođenu vašim potrebama.
           </p>
-          <div className="mt-lg">
+          <div className="mt-md">
             <Button href="mailto:lidija.samardzija@platinum-vina.hr?subject=Upit%20za%20ponudu">
               Zatraži ponudu
             </Button>
