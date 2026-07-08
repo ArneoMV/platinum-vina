@@ -25,11 +25,13 @@ const PERSON_DROP = 180; // person: translateY 0 → +PERSON_DROP px over 1 vh (
 const PERSON_MICRO_SHRINK = 0.028; // person: scale 1 → 1 - this over 1 vh — MICRO (~20px/side at 1440px render width)
 const BG_ZOOM = 0.06; // bg-big: scale 1 → 1 + BG_ZOOM over 1 vh
 
-// Static base nudge for the headline block: 50px RIGHT, 50px UP. Applied on the
-// OUTER text wrapper; the scroll parallax (TEXT_DROP) lives on the inner block,
-// so the base offset and the scroll motion compose on two separate elements
-// instead of overwriting a single `transform`.
-const TEXT_BASE_OFFSET = "translate3d(50px, -50px, 0)";
+// Static VERTICAL base nudge for the headline block: 50px UP (no horizontal
+// component — horizontal position is owned solely by pl-[15%] on the inner
+// block, so the text is never shifted twice). Applied on the OUTER text
+// wrapper; the scroll parallax (TEXT_DROP) lives on the inner block, so the
+// base offset and the scroll motion compose on two separate elements instead
+// of overwriting a single `transform`.
+const TEXT_BASE_OFFSET = "translate3d(0, -50px, 0)";
 
 export function LandingHero() {
   const bgBigRef = useRef<HTMLImageElement>(null);
@@ -105,11 +107,13 @@ export function LandingHero() {
       />
 
       {/* Text box — above the scene, below the leaves. OUTER wrapper centers the
-          block and applies the static base nudge (50px right / 50px up). INNER
-          block (textRef) carries the scroll parallax translateY, so the base
-          offset and the scroll motion live on separate elements and compose
-          cleanly instead of overwriting one transform. White serif headline
-          with a soft shadow for legibility over the vineyard. */}
+          block and applies the static VERTICAL nudge (-50px up) only. INNER
+          block (textRef) owns the horizontal position via pl-[15%] (the single
+          source of horizontal offset) plus the scroll parallax translateY, so
+          the vertical nudge, the horizontal padding, and the scroll motion live
+          on separate concerns and compose cleanly instead of overwriting one
+          transform. White serif headline with a soft shadow for legibility over
+          the vineyard. */}
       <div
         className="absolute inset-0 z-20 flex items-center"
         style={{ transform: TEXT_BASE_OFFSET }}
@@ -117,9 +121,14 @@ export function LandingHero() {
         <div
           ref={textRef}
           data-layer="text"
-          className="pl-[8%] pr-6 will-change-transform"
+          className="pl-[15%] pr-6 will-change-transform"
         >
-          <h1 className="headline-xl md:headline-xxl text-[var(--color-neutral-white)] [text-shadow:0_2px_28px_rgba(0,0,0,0.45)]">
+          {/* lg:text-[125px]/leading-[1.15] is a hero-specific one-off that
+              exceeds the type scale (top token headline-xxl = 87px). The
+              headline-* utilities still supply PT Serif + 0.02em letter-spacing;
+              the lg variant is emitted after md so it overrides only size and
+              line-height at ≥1024px. */}
+          <h1 className="headline-xl md:headline-xxl lg:text-[125px] lg:leading-[1.15] text-[var(--color-neutral-white)] [text-shadow:0_2px_28px_rgba(0,0,0,0.45)]">
             Vinska
             <br />
             Ponuda
